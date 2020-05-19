@@ -1,9 +1,9 @@
 import React from 'react';
 
+import { Tabs } from 'antd';
 import styles from './style.less';
 
 import qrCode from './images/qrcode.png';
-import { Tabs } from 'antd';
 
 const QrCode = () => (
   <Tabs>
