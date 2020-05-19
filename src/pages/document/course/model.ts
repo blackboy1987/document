@@ -1,7 +1,7 @@
 import { Effect, Reducer } from 'umi';
 
 import { ResourceListItem } from '@/pages/document/data';
-import { list, download, downloadHits } from './service';
+import { list, downloadHits,detail } from './service';
 
 export interface StateType {
   list: ResourceListItem[];
@@ -12,8 +12,8 @@ export interface ModelType {
   state: StateType;
   effects: {
     list: Effect;
-    download: Effect;
     downloadHits: Effect;
+    detail: Effect;
   };
   reducers: {
     listInfo: Reducer<StateType>;
@@ -38,14 +38,15 @@ const Model: ModelType = {
         callback(Array.isArray(response) ? response : []);
       }
     },
-    *download({ payload, callback }, { call }) {
-      const response = yield call(download, payload);
+    *downloadHits({ payload, callback }, { call }) {
+      const response = yield call(downloadHits, payload);
       if (callback) {
         callback(response);
       }
     },
-    *downloadHits({ payload, callback }, { call }) {
-      const response = yield call(downloadHits, payload);
+
+    *detail({ payload, callback }, { call }) {
+      const response = yield call(detail, payload);
       if (callback) {
         callback(response);
       }

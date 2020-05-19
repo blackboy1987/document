@@ -28,3 +28,10 @@ export async function downloadHits(params: LoginParamsType) {
     data: params,
   });
 }
+
+export async function detail(params: LoginParamsType) {
+  return request(`${constants.memberUrl}course/detail`, {
+    method: 'POST',
+    data: params,
+  });
+}

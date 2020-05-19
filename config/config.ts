@@ -100,7 +100,16 @@ export default defineConfig({
               name: 'course',
               icon: 'videoCamera',
               path: '/course',
-              component: './document/course',
+              routes:[
+                {
+                  path: '/course',
+                  component: './document/course',
+                },
+                {
+                  path: '/course/list/:id',
+                  component: './document/course/detail',
+                }
+              ]
             },
             {
               path: '/',
