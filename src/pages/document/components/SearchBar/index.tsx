@@ -1,23 +1,24 @@
-import React,{Component} from "react";
-import {Input} from "antd";
-import {ResourceListItem} from "@/pages/document/data";
+import React, { Component } from 'react';
+import { Input } from 'antd';
+import { ResourceListItem } from '@/pages/document/data';
 
 interface IndexProps {
-  originData:ResourceListItem[];
-  handleFormSubmit:(filterResources:ResourceListItem[])=>void;
+  originData: ResourceListItem[];
+  handleFormSubmit: (filterResources: ResourceListItem[]) => void;
 }
 
-class Index extends Component<IndexProps>{
-
+class Index extends Component<IndexProps> {
   handleFormSubmit = (value: string) => {
-    const { originData = [],handleFormSubmit } = this.props;
+    const { originData = [], handleFormSubmit } = this.props;
     const filterResources = originData
       .map((item) => {
         return {
           ...item,
           items: item.items.filter(
             (resource) =>
-              resource.name.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0,
+              (resource.name || resource.title)
+                .toLocaleLowerCase()
+                .indexOf(value.toLocaleLowerCase()) >= 0,
           ),
         };
       })
@@ -26,11 +27,10 @@ class Index extends Component<IndexProps>{
     handleFormSubmit(filterResources);
   };
 
-  render(){
-
+  render() {
     return (
       <div style={{ textAlign: 'center' }}>
-        <h1 style={{fontSize:28}}>爱尚学院资源查询系统</h1>
+        <h1 style={{ fontSize: 28 }}>爱尚学院资源查询系统</h1>
         <Input.Search
           placeholder="请输入"
           enterButton="搜索"
