@@ -1,7 +1,7 @@
 import { Effect, Reducer } from 'umi';
 
-import { list, download, downloadHits } from './service';
 import { ResourceListItem } from '@/pages/cms/data';
+import { list, download, downloadHits } from './service';
 
 export interface StateType {
   list: ResourceListItem[];

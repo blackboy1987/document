@@ -1,7 +1,7 @@
 import { Effect, Reducer } from 'umi';
 
-import { list, download, downloadHits } from './service';
 import { ProjectItem } from '@/pages/document/project/data';
+import { list, download, downloadHits } from './service';
 
 export interface StateType {
   list: ProjectItem[];

@@ -1,7 +1,7 @@
 import { Effect } from 'umi';
 
-import { list, download, downloadHits } from './service';
 import { ToolListItem } from '@/pages/document/tool/data';
+import { list, download, downloadHits } from './service';
 
 export interface StateType {
   list: ToolListItem[];
