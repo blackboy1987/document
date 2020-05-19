@@ -5,6 +5,7 @@ export interface ResourceListItem {
 }
 
 interface ResourceItem {
+  props: { [key: string]: any };
   id: number;
   name: string;
   title: string;
