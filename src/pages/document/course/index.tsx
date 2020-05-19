@@ -5,7 +5,7 @@ import {List, Typography, Row, Col, Skeleton, Tabs, Card} from 'antd';
 import { VideoCameraOutlined } from '@ant-design/icons';
 import { StateType } from '@/pages/document/cms/model';
 import { Dispatch } from '@@/plugin-dva/connect';
-import { AnyAction,connect } from 'umi';
+import { AnyAction,connect,Link } from 'umi';
 import { ResourceItem, ResourceListItem } from '@/pages/document/data';
 import moment from 'moment';
 import SearchBar from '@/pages/document/components/SearchBar';
@@ -159,9 +159,9 @@ class Index extends Component<IndexProps, IndexState> {
                         <List.Item
                           key={resource.id}
                           actions={[
-                            <a target='_blank' href={`https://www.bilibili.com/video/${resource.props.bid}`}>
+                            <Link to={`/course/list/${resource.id}`}>
                               <VideoCameraOutlined style={{ fontSize: 18 }} />
-                            </a>,
+                            </Link>,
                           ]}
                         >
                           <Skeleton loading={false} title={false}>
