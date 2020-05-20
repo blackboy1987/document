@@ -30,11 +30,14 @@ const Model: ModelType = {
 
   effects: {
     *fetchCurrent(_, { call, put }) {
-      const response = yield call(queryCurrent);
-      yield put({
-        type: 'saveCurrentUser',
-        payload: response,
-      });
+      alert("account/center/model");
+      if(localStorage.getItem("token")){
+        const response = yield call(queryCurrent);
+        yield put({
+          type: 'saveCurrentUser',
+          payload: response,
+        });
+      }
     },
     *fetch({ payload }, { call, put }) {
       const response = yield call(queryFakeList, payload);

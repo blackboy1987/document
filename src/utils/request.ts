@@ -54,4 +54,16 @@ const request = extend({
   requestType:'form',
 });
 
+request.interceptors.request.use((url, options) => {
+  return {
+    url,
+    options: {
+      ...options,
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    },
+  };
+});
+
 export default request;

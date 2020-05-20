@@ -6,7 +6,7 @@ export interface CurrentUser {
   avatar?: string;
   name?: string;
   username?: string;
-  id: number;
+  id?: number;
   title?: string;
   group?: string;
   signature?: string;
@@ -51,11 +51,14 @@ const UserModel: UserModelType = {
       });
     },
     *fetchCurrent(_, { call, put }) {
-      const response = yield call(queryCurrent);
-      yield put({
-        type: 'saveCurrentUser',
-        payload: response,
-      });
+      console.log(localStorage.getItem("token"));
+      if(localStorage.getItem("token")){
+        const response = yield call(queryCurrent);
+        yield put({
+          type: 'saveCurrentUser',
+          payload: response,
+        });
+      }
     },
   },
 
