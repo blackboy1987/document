@@ -1,5 +1,5 @@
-const baseUrl = 'http://localhost:9001/web/';
-// const baseUrl='http://document1.i-gomall.com/web/';
+const baseUrl = 'http://localhost:9000/';
+// const baseUrl='http://api.i-gomall.com/';
 
 export default {
   baseUrl,
