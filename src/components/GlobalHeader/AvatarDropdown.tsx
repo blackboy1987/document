@@ -1,11 +1,14 @@
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar, Menu, Spin } from 'antd';
+import { Avatar, Divider, Menu } from 'antd';
 import { ClickParam } from 'antd/es/menu';
 import React from 'react';
-import { history, ConnectProps, connect } from 'umi';
+import { history, ConnectProps, connect, Link } from 'umi';
 import { ConnectState } from '@/models/connect';
 import { CurrentUser } from '@/models/user';
 import HeaderDropdown from '../HeaderDropdown';
+
+import defaultAvatar from '@/assets/3.png';
+
 import styles from './index.less';
 
 export interface GlobalHeaderRightProps extends Partial<ConnectProps> {
@@ -36,7 +39,7 @@ class AvatarDropdown extends React.Component<GlobalHeaderRightProps> {
     const {
       currentUser = {
         avatar: '',
-        name: '',
+        username: '',
       },
       menu,
     } = this.props;
@@ -62,22 +65,23 @@ class AvatarDropdown extends React.Component<GlobalHeaderRightProps> {
         </Menu.Item>
       </Menu>
     );
-    return currentUser && currentUser.name ? (
+    return currentUser && currentUser.username ? (
       <HeaderDropdown overlay={menuHeaderDropdown}>
         <span className={`${styles.action} ${styles.account}`}>
-          <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" />
-          <span className={styles.name}>{currentUser.name}</span>
+          <Avatar
+            size="small"
+            className={styles.avatar}
+            src={currentUser.avatar || defaultAvatar}
+            alt="avatar"
+          />
+          <span className={styles.name}>{currentUser.username}</span>
         </span>
       </HeaderDropdown>
     ) : (
-      <span className={`${styles.action} ${styles.account}`}>
-        <Spin
-          size="small"
-          style={{
-            marginLeft: 8,
-            marginRight: 8,
-          }}
-        />
+      <span>
+        <Link to="/user/login">登录</Link>
+        <Divider type="vertical" />
+        <Link to="/user/register">注册</Link>
       </span>
     );
   }

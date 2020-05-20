@@ -5,6 +5,8 @@ import { queryCurrent, query as queryUsers } from '@/services/user';
 export interface CurrentUser {
   avatar?: string;
   name?: string;
+  username?: string;
+  id: number;
   title?: string;
   group?: string;
   signature?: string;
