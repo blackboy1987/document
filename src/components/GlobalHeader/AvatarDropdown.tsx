@@ -5,9 +5,8 @@ import React from 'react';
 import { history, ConnectProps, connect, Link } from 'umi';
 import { ConnectState } from '@/models/connect';
 import { CurrentUser } from '@/models/user';
-import HeaderDropdown from '../HeaderDropdown';
-
 import defaultAvatar from '@/assets/3.png';
+import HeaderDropdown from '../HeaderDropdown';
 
 import styles from './index.less';
 
