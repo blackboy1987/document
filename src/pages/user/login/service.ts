@@ -1,4 +1,5 @@
-import request from 'umi-request';
+import request from '@/utils/request';
+import constants from '@/utils/constants';
 
 export interface LoginParamsType {
   userName: string;
@@ -8,7 +9,7 @@ export interface LoginParamsType {
 }
 
 export async function fakeAccountLogin(params: LoginParamsType) {
-  return request('/api/login/account', {
+  return request(`${constants.memberUrl}login`, {
     method: 'POST',
     data: params,
   });

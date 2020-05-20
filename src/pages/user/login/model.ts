@@ -7,6 +7,7 @@ export interface StateType {
   status?: 'ok' | 'error';
   type?: string;
   currentAuthority?: 'user' | 'guest' | 'admin';
+  content?: string;
 }
 
 export interface ModelType {
@@ -69,6 +70,7 @@ const Model: ModelType = {
         ...state,
         status: payload.status,
         type: payload.type,
+        content: payload.content,
       };
     },
   },
